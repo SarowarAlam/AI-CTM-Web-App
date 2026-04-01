@@ -65,5 +65,5 @@ The app is deployed on Render (free tier).
 
 ## MIT
 
-Add screenshots of the login page, dashboard, admin portal, etc. You can create a `screenshots` folder in your repo and link to images.
+will add screenshots of the login page, dashboard, admin portal, etc. You can create a `screenshots` folder in your repo and link to images.
 
