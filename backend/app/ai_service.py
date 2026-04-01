@@ -2,7 +2,7 @@ from transformers import pipeline
 import torch
 
 class ZeroShotClassifier:
-    def __init__(self, model_name="facebook/bart-large-mnli"):
+    def __init__(self, model_name = "typeform/distilbert-base-uncased-mnli"):
         self.device = 0 if torch.cuda.is_available() else -1
         self.pipeline = pipeline("zero-shot-classification", model=model_name, device=self.device)
         self.labels = ["billing", "technical", "account", "feature request", "bug", "general inquiry"]
