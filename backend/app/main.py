@@ -12,7 +12,10 @@ app = FastAPI(title="Ticket Management System")
 # CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost"],  # Adjust for frontend
+    allow_origins=[
+    "http://localhost:3000",
+    "https://ticket-system-frontend-jnd3.onrender.com"
+],  # Adjust for frontend
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
