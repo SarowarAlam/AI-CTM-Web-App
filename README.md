@@ -35,9 +35,13 @@ pip install -r requirements.txt
 ## .env file creation
 
 DATABASE_URL=postgresql://username:password@localhost:5432/ticket_db
+
 SECRET_KEY=your-secret-key
+
 ALGORITHM=HS256
+
 ACCESS_TOKEN_EXPIRE_MINUTES=1440
+
 Run database migrations (tables are created automatically on first run):
 
 ## Backend Setup
