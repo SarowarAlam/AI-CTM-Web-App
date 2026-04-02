@@ -14,7 +14,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
     "http://localhost:3000",
-    "https://ticket-system-frontend-jnd3.onrender.com"
+    "https://ticket-system-frontend-wejp.onrender.com"
 ],  # Adjust for frontend
     allow_credentials=True,
     allow_methods=["*"],
