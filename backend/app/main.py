@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+import os
 from fastapi.middleware.cors import CORSMiddleware
 from .routers import auth, users, tickets, admin, health
 from .database import engine, Base
@@ -9,13 +10,12 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Ticket Management System")
 
+ALLOWED_ORIGINS = os.getenv("ALLOW_ORIGIN", "http://localhost:3000").split(",")
+
 # CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-    "http://localhost:3000",
-    "https://ticket-system-frontend-wejp.onrender.com"
-],  # Adjust for frontend
+    allow_origins=ALLOWED_ORIGINS, 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
