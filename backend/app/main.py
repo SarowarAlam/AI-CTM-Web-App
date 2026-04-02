@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .routers import auth, users, tickets, admin
+from .routers import auth, users, tickets, admin, health
 from .database import engine, Base
 from . import models
 
@@ -23,6 +23,7 @@ app.include_router(auth.router, prefix="/api/v1")
 app.include_router(users.router, prefix="/api/v1")
 app.include_router(tickets.router, prefix="/api/v1")
 app.include_router(admin.router, prefix="/api/v1")
+app.include_router(health.router, prefix="/api/v1")
 
 @app.get("/")
 def root():
