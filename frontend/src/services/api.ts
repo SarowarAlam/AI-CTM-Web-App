@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Hardcode the Render backend URL for now
-const API_BASE_URL = 'https://ticket-system-backend-iybe.onrender.com/api/v1';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api/v1';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
