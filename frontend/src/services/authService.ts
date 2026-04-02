@@ -1,5 +1,5 @@
 import api from './api';
-import { User, LoginCredentials, RegisterData } from '../types';
+import { User, RegisterData } from '../types';
 
 export const login = async (email: string, password: string) => {
   const formData = new FormData();
