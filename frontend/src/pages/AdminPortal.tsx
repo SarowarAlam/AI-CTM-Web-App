@@ -4,6 +4,20 @@ import api from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
 import { User, Ticket } from '../types';
 
+// Color maps for status and priority
+const statusColors: Record<string, string> = {
+  open: 'bg-red-100 text-red-800',
+  in_progress: 'bg-yellow-100 text-yellow-800',
+  resolved: 'bg-green-100 text-green-800',
+  closed: 'bg-gray-100 text-gray-800',
+};
+
+const priorityColors: Record<string, string> = {
+  low: 'bg-blue-100 text-blue-800',
+  medium: 'bg-orange-100 text-orange-800',
+  high: 'bg-purple-100 text-purple-800',
+};
+
 const AdminPortal: React.FC = () => {
   const { user } = useAuth();
   const queryClient = useQueryClient();
@@ -63,6 +77,18 @@ const AdminPortal: React.FC = () => {
       onSuccess: () => {
         queryClient.invalidateQueries('categories');
       },
+    }
+  );
+
+  // State for new user creation
+  const [newUser, setNewUser] = useState({ email: '', password: '', full_name: '', role: 'agent' });
+  const createUserMutation = useMutation(
+    (userData: any) => api.post('/users', userData),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries('users');
+        setNewUser({ email: '', password: '', full_name: '', role: 'agent' });
+      }
     }
   );
 
@@ -193,6 +219,7 @@ const AdminPortal: React.FC = () => {
                 <tr>
                   <th className="px-3 py-2 text-left text-sm font-semibold">Title</th>
                   <th className="px-3 py-2 text-left text-sm font-semibold">Status</th>
+                  <th className="px-3 py-2 text-left text-sm font-semibold">Priority</th>
                   <th className="px-3 py-2 text-left text-sm font-semibold">Category</th>
                   <th className="px-3 py-2 text-left text-sm font-semibold">Created By</th>
                   <th className="px-3 py-2 text-left text-sm font-semibold">Actions</th>
@@ -202,7 +229,16 @@ const AdminPortal: React.FC = () => {
                 {tickets.map((ticket) => (
                   <tr key={ticket.id} className="hover:bg-gray-50">
                     <td className="px-3 py-2 text-sm">{ticket.title}</td>
-                    <td className="px-3 py-2 text-sm capitalize">{ticket.status}</td>
+                    <td className="px-3 py-2 text-sm">
+                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${statusColors[ticket.status]}`}>
+                        {ticket.status.replace('_', ' ')}
+                      </span>
+                    </td>
+                    <td className="px-3 py-2 text-sm">
+                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${priorityColors[ticket.priority]}`}>
+                        {ticket.priority}
+                      </span>
+                    </td>
                     <td className="px-3 py-2 text-sm">{ticket.category}</td>
                     <td className="px-3 py-2 text-sm">{ticket.created_by}</td>
                     <td className="px-3 py-2 text-sm">
@@ -226,6 +262,50 @@ const AdminPortal: React.FC = () => {
       {/* Users Section */}
       <div className="bg-white p-4 shadow rounded">
         <h2 className="text-lg font-semibold mb-4">Users</h2>
+        
+        {/* Create New User Form */}
+        <div className="mt-4 p-4 border rounded mb-4">
+          <h3 className="font-medium mb-2">Create New User</h3>
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-2">
+            <input
+              type="email"
+              placeholder="Email"
+              value={newUser.email}
+              onChange={e => setNewUser({...newUser, email: e.target.value})}
+              className="border rounded p-1"
+            />
+            <input
+              type="text"
+              placeholder="Full Name"
+              value={newUser.full_name}
+              onChange={e => setNewUser({...newUser, full_name: e.target.value})}
+              className="border rounded p-1"
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={newUser.password}
+              onChange={e => setNewUser({...newUser, password: e.target.value})}
+              className="border rounded p-1"
+            />
+            <select
+              value={newUser.role}
+              onChange={e => setNewUser({...newUser, role: e.target.value})}
+              className="border rounded p-1"
+            >
+              <option value="agent">Agent</option>
+              <option value="admin">Admin</option>
+              <option value="customer">Customer</option>
+            </select>
+            <button
+              onClick={() => createUserMutation.mutate(newUser)}
+              className="bg-green-600 text-white px-3 py-1 rounded"
+            >
+              Add User
+            </button>
+          </div>
+        </div>
+
         {usersLoading ? (
           <div>Loading users...</div>
         ) : users && users.length > 0 ? (
