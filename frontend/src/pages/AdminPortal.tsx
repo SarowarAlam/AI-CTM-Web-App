@@ -23,7 +23,7 @@ const AdminPortal: React.FC = () => {
   const queryClient = useQueryClient();
 
   // Fetch users
-  const { data: users, isLoading: usersLoading } = useQuery('users', async () => {
+  const { data: users, isLoading: usersLoading} = useQuery('users', async () => {
     const { data } = await api.get('/users');
     return data as User[];
   });
@@ -45,6 +45,7 @@ const AdminPortal: React.FC = () => {
     const { data } = await api.get('/admin/categories');
     return data.labels as string[];
   });
+
 
   // State for category editing
   const [newCategory, setNewCategory] = useState('');
