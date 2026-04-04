@@ -57,9 +57,9 @@ Open http://localhost:3000 to use the app.
 ### Deployment
 The app is deployed on Render (free tier).
 
- - Backend: https://ticket-system-backend.onrender.com
+ - Backend: [https://ticket-system-backend.onrender.com](https://ticket-system-backend-iybe.onrender.com)
 
- - Frontend: https://ticket-system-frontend.onrender.com
+ - Frontend: [https://ticket-system-frontend.onrender.com](https://ticket-system-frontend-wejp.onrender.com)
 
  - Database: PostgreSQL managed by Render.
 
