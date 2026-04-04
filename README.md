@@ -1,4 +1,4 @@
-# AI-Powered Ticket Management System
+# AI-Powered Ticket Management System (Prototype)
 
 A full‑stack web application that automatically classifies customer tickets using zero‑shot AI. Built with FastAPI (Python), React (TypeScript), and PostgreSQL.
 
