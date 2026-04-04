@@ -20,7 +20,7 @@ export const useCreateTicket = () => {
   const queryClient = useQueryClient();
   return useMutation(
     (newTicket: { title: string; description: string; priority?: string }) =>
-      api.post('/tickets', newTicket),
+      api.post('/tickets/', newTicket),
     {
       onSuccess: () => {
         queryClient.invalidateQueries('tickets');
