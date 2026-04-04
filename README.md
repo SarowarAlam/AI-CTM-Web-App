@@ -67,5 +67,13 @@ The app is deployed on Render (free tier).
 
 ## MIT
 
-will add screenshots of the login page, dashboard, admin portal, etc. You can create a `screenshots` folder in your repo and link to images.
+Sign in Page:
+<img width="1918" height="908" alt="image" src="https://github.com/user-attachments/assets/16466555-6aaf-46df-a854-af5bb4ca7b44" />
+
+Sign up page:
+<img width="1918" height="910" alt="image" src="https://github.com/user-attachments/assets/9c446208-6db6-45e2-befd-296b4522ae31" />
+
+
+
+
 
