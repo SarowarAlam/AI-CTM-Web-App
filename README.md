@@ -73,6 +73,18 @@ Sign in Page:
 Sign up page:
 <img width="1918" height="910" alt="image" src="https://github.com/user-attachments/assets/9c446208-6db6-45e2-befd-296b4522ae31" />
 
+Admin Panel:
+<img width="1920" height="1492" alt="image" src="https://github.com/user-attachments/assets/c86ca9e7-b9b4-4d3a-aae0-5f4a4facda94" />
+
+Agent Panel:
+<img width="1920" height="916" alt="image" src="https://github.com/user-attachments/assets/90438ccf-c832-49ac-af7c-e54500844e8d" />
+
+Client Panel:
+<img width="1920" height="980" alt="image" src="https://github.com/user-attachments/assets/c4e1cef7-e97a-4490-a460-c21428236a22" />
+
+
+
+
 
 
 
